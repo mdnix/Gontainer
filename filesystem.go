@@ -68,12 +68,12 @@ func exitIfRootfsNotFound(rootfsPath string) {
 Please create this directory and unpack a suitable root filesystem inside it.
 An example rootfs, Alpine, can be downloaded from:
 
-http://dl-cdn.alpinelinux.org/alpine/v3.11/releases/x86_64/alpine-standard-3.11.3-x86_64.iso
+http://dl-cdn.alpinelinux.org/alpine/v3.11/releases/x86_64/alpine-minirootfs-3.11.5-x86_64.tar.gz
 
 And unpacked by:
 
 mkdir -p %s
-tar -C %s -xf alpine-minirootfs-3.11.3-x86_64.tar.gz
+tar -C %s -xf alpine-minirootfs-3.11.5-x86_64.tar.gz
 `, rootfsPath, rootfsPath, rootfsPath)
 
 		fmt.Println(usefulErrorMsg)
