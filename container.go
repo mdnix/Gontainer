@@ -30,6 +30,8 @@ func nsInitialisation() {
 		os.Exit(1)
 	}
 
+	cg()
+
 	syscall.Sethostname([]byte(genHostname(0)))
 
 	if err := waitForNetwork(); err != nil {
