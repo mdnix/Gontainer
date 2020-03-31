@@ -9,6 +9,8 @@ import (
 
 func cg() {
 	cgroups := "/sys/fs/cgroup/"
+	pid := strconv.Itoa(os.Getpid())
+
 	mem := filepath.Join(cgroups, "memory")
 	mgontainer := filepath.Join(mem, "gontainer")
 	os.Mkdir(mgontainer, 0755)
@@ -19,7 +21,6 @@ func cg() {
 	pids := filepath.Join(cgroups, "pids")
 	pgontainer := filepath.Join(pids, "gontainer")
 	os.Mkdir(pgontainer, 0755)
-	pid := strconv.Itoa(os.Getpid())
 	ioutil.WriteFile(filepath.Join(pids, "pids.max"), []byte("5"), 0700)
 	ioutil.WriteFile(filepath.Join(pids, "notify_on_release"), []byte("1"), 0700)
 	ioutil.WriteFile(filepath.Join(pids, "cgroup.procs"), []byte(pid), 0700)
