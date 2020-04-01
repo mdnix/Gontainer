@@ -30,8 +30,6 @@ func nsInitialisation() {
 		os.Exit(1)
 	}
 
-	cg()
-
 	syscall.Sethostname([]byte(genHostname(0)))
 
 	if err := waitForNetwork(); err != nil {
@@ -50,6 +48,8 @@ func nsRun() {
 	cmd.Stderr = os.Stderr
 
 	cmd.Env = []string{"PS1=[containerized-process]- # "}
+
+	cg()
 
 	if err := cmd.Run(); err != nil {
 		fmt.Printf("Error running the /bin/sh command - %s\n", err)

@@ -8,7 +8,10 @@ import (
 )
 
 func cg() {
-	cgroups := "/sys/fs/cgroup/"
+	cgroups := "/sys/fs/cgroup"
+	if _, err := os.Stat(cgroups); os.IsNotExist(err) {
+		os.Mkdir(cgroups, os.ModeDir)
+	}
 	pid := strconv.Itoa(os.Getpid())
 
 	mem := filepath.Join(cgroups, "memory")
